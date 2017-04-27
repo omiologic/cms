@@ -4,7 +4,11 @@ module.exports = {
   parser: "babel-eslint",
   parserOptions: {
     sourceType: "module",
-    ecmaVersion: 8
+    ecmaVersion: 8,
+    esversion: 6,
+    "ecmaFeatures": {
+        "jsx": true
+    }
   },
   ecmaFeatures: {
     jsx: true,
@@ -21,7 +25,9 @@ module.exports = {
     "no-unused-expressions": "off",
     "one-var": "off",
     "new-parens": "off",
-    "indent": ["error", 2, {SwitchCase: 0}],
+    "semi": [1, "always"],
+    "indent": [1, "tab"],
+    "no-tabs": 0,
     "arrow-body-style": ["warn", "as-needed"],
 
     "no-unused-vars": "off",

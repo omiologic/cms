@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
-const LiveReloadPlugin = require('webpack-livereload-plugin')
-    , devMode = require('.').isDevelopment
-
+const LiveReloadPlugin = require('webpack-livereload-plugin'),
+  devMode = require('.').isDevelopment,
+  USE_FAST_SOURCE_MAPS = false;
 /**
  * Fast source maps rebuild quickly during development, but only give a link
  * to the line where the error occurred. The stack trace will show the bundled
@@ -10,18 +10,14 @@ const LiveReloadPlugin = require('webpack-livereload-plugin')
  * usable stack traces. Set to `true` if you want to speed up development.
  */
 
-    , USE_FAST_SOURCE_MAPS = false
-
 module.exports = {
-  entry: './app/main.jsx',
+  entry: './src/main.jsx',
   output: {
     path: __dirname,
     filename: './public/bundle.js'
   },
   context: __dirname,
-  devtool: devMode && USE_FAST_SOURCE_MAPS
-    ? 'cheap-module-eval-source-map'
-    : 'source-map',
+  devtool: devMode && USE_FAST_SOURCE_MAPS ? 'cheap-module-eval-source-map' : 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.json', '*']
   },
@@ -37,7 +33,5 @@ module.exports = {
       }]
     }]
   },
-  plugins: devMode
-    ? [new LiveReloadPlugin({appendScriptTag: true})]
-    : []
+  plugins: devMode ? [new LiveReloadPlugin({ appendScriptTag: true })] : []
 }
